@@ -1,0 +1,1 @@
+import {Router} from 'express';import User from '../models/User.js';import {auth,requireRole} from '../middleware/auth.js';import {wrap} from '../middleware/errorHandler.js';const router=Router();router.use(auth,requireRole('admin'));router.get('/students',wrap(async(req,res)=>res.json(await User.find({role:'student'}).sort({totalSolved:-1}))));export default router;

@@ -1,0 +1,2 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({company:{type:String,required:true},role:{type:String,required:true},description:String,package:String,deadline:{type:Date,required:true},eligibility:{minSolved:{type:Number,default:0},minCgpa:{type:Number,default:0},branches:{type:[String],default:[]}},createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}},{timestamps:true});export default mongoose.model('Job',schema);

@@ -1,0 +1,1 @@
+export const wrap=fn=>(req,res,next)=>Promise.resolve(fn(req,res,next)).catch(next);export function errorHandler(err,req,res,next){console.error(err);res.status(err.status||500).json({error:err.code===11000?'Duplicate record':err.message||'Server error'})}

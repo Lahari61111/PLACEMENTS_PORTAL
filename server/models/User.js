@@ -1,0 +1,3 @@
+import mongoose from 'mongoose';
+const userSchema=new mongoose.Schema({name:{type:String,required:true},email:{type:String,required:true,unique:true,lowercase:true},passwordHash:{type:String,required:true,select:false},role:{type:String,enum:['student','admin'],default:'student'},regNo:String,branch:String,batch:Number,cgpa:{type:Number,min:0,max:10,default:0},handles:{leetcode:String,codechef:String,hackerrank:String},stats:{leetcode:{easy:{type:Number,default:0},medium:{type:Number,default:0},hard:{type:Number,default:0},total:{type:Number,default:0}},codechef:{total:{type:Number,default:0}},hackerrank:{total:{type:Number,default:0}}},totalSolved:{type:Number,default:0},lastSynced:Date},{timestamps:true});
+export default mongoose.model('User',userSchema);
